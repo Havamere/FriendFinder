@@ -1,0 +1,30 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "finds you new friends",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "body-parser": "^1.15.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "testing",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Havamere/FriendFinder.git"
+  },
+  "keywords": [
+    "express.js",
+    "node.js"
+  ],
+  "author": "Kyle Rinehart",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Havamere/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/Havamere/FriendFinder#readme"
+}
