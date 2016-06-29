@@ -130,6 +130,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- modal hidden on page to be toggled after submit button -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -138,7 +139,6 @@
 		        <h4 class="modal-title" id="myModalLabel">Congratulations</h4>
 		      </div>
 		      <div class="modal-body">
-		        ...
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -147,32 +147,42 @@
 		  </div>
 		</div>
 	</div>
+	<!-- create space to hold footer at bottom of page -->
 	<div class="push"></div>
 	</div>
 	<footer class="footer">
 		<p id="copyright">&copy;Copyright 2016 Kyle Rinehart</p>
 	</footer>
 	<script type="text/javascript">
+		//on click of submit button, do this stuff
 		$('#submit').on('click', function(){
+			//take info from survey form and store it into a object
 			var newFriend = {
 				'name': $('#name').val().trim(),
 				'photo': $('#photo').val().trim(),
 				'scores': [$('#q1').val(),$('#q2').val(),$('#q3').val(),$('#q4').val(),$('#q5').val(),$('#q6').val(),$('#q7').val(),$('#q8').val(),$('#q9').val(),$('#q10').val()]
 			};
+			//test collection of info
+			//console.log(newFriend);
 
-			console.log(newFriend);
-
+			//grab current URL for post method
 			var currentURL = window.location.origin;
 
+			//send info to api route and await response
 		    $.post(currentURL+"/api/friends", newFriend, function(data){
-		    	console.log(data);
+		    	//test data retrieval
+		    	//console.log(data);
 		    	
 		    })
 		    	.done(function(data){
-		    		console.log(data);
+		    		//test data retrieval
+		    		//console.log(data);
+
+		    		//build info into modal of new best friend
 		    		$('.modal-body').append('<h1> New friend found!</h1>'+
 		    								'<h3> '+data.name+ '</h3>'+
 		    								'<img src="'+data.photo+'" width=300px>');
+		    		//toggle modal to appear on page
 			    	$('#myModal').modal('toggle');
 		    });
 		})
